@@ -138,7 +138,7 @@ button:hover {
     background: #0097a7;
 }
 
-/* Generated E-mail & Text Areas */
+/* Generated email & Text Areas */
 textarea {
     width: 100%;
     max-width: 700px;
@@ -147,8 +147,8 @@ textarea {
     padding: 10px;
 }
 
-/* Final E-mail Section */
-.final-E-mail-actions {
+/* Final email Section */
+.final-email-actions {
     display: flex;
     justify-content: center;
     gap: 20px;

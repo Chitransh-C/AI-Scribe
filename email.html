@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI E-mail Generator</title>
+    <title>AI email Generator</title>
     <link rel="stylesheet" href="css/email.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
@@ -12,8 +12,8 @@
         <header>
         <div class="nav-container">
             <a class="logo" href="#">
-                <img src="asset/E-mailgen.jpg" alt="E-mailGen Logo">
-                AI E-mail Generator
+                <img src="asset/emailgen.jpg" alt="emailGen Logo">
+                AI email Generator
             </a>
             
         <button class="back-button" onclick="window.location.href='index.html';">
@@ -24,39 +24,39 @@
     </header>
 
     <main>
-        <!-- E-mail Type Selection -->
+        <!-- email Type Selection -->
         <section>
-            <label for="E-mailType">Select E-mail Type:</label>
-            <select id="E-mailType">
-                <option value="" disabled selected>Select a E-mail type</option>
+            <label for="emailType">Select email Type:</label>
+            <select id="emailType">
+                <option value="" disabled selected>Select a email type</option>
                 <option value="Job Application">Job Application</option>
-<option value="Resignation E-mail">Resignation E-mail</option>
+<option value="Resignation email">Resignation email</option>
 <option value="Request from leave from college workshop due to nptel exam for one day">Request of leave because of NPTEL exam </option>
-<option value="Complaint E-mail">Complaint E-mail</option>
+<option value="Complaint email">Complaint email</option>
 <option value="Request for Leave">Request for Leave</option>
 <option value="Business Proposal">Business Proposal</option>
-<option value="Invitation E-mail">Invitation E-mail</option>
-<option value="Recommendation E-mail">Recommendation E-mail</option>
-<option value="E-mail of Reference">E-mail of Reference</option>
+<option value="Invitation email">Invitation email</option>
+<option value="Recommendation email">Recommendation email</option>
+<option value="email of Reference">email of Reference</option>
 <option value="Request for Information">Request for Information</option>
-<option value="Follow-Up E-mail">Follow-Up E-mail</option>
-<option value="Acceptance E-mail">Acceptance E-mail</option>
-<option value="Declination E-mail">Declination E-mail</option>
+<option value="Follow-Up email">Follow-Up email</option>
+<option value="Acceptance email">Acceptance email</option>
+<option value="Declination email">Declination email</option>
 <option value="Bank Account Closure">Bank Account Closure</option>
 <option value="Request for Sponsorship">Request for Sponsorship</option>
-<option value="E-mail to the Editor">E-mail to the Editor</option>
-<option value="Appointment E-mail">Appointment E-mail</option>
+<option value="email to the Editor">email to the Editor</option>
+<option value="Appointment email">Appointment email</option>
 <option value="Internship Application">Internship Application</option>
-<option value="E-mail of Apology">E-mail of Apology</option>
+<option value="email of Apology">email of Apology</option>
 <option value="Notice of Termination">Notice of Termination</option>
-<option value="Agreement E-mail">Agreement E-mail</option>
+<option value="Agreement email">Agreement email</option>
 
-                <!-- Add more E-mail types as needed -->
+                <!-- Add more email types as needed -->
             </select>
-            <!-- E-mail Tone Selection -->
+            <!-- email Tone Selection -->
 <section>
-    <label for="E-mailTone" style="margin-top: 20px;">Select E-mail Tone:</label>
-    <select id="E-mailTone">
+    <label for="emailTone" style="margin-top: 20px;">Select email Tone:</label>
+    <select id="emailTone">
         <option value="" disabled selected>Select a tone</option>
         <option value="Strictly Formal">Strictly Formal</option>
         <option value="Professional">Professional</option>
@@ -92,13 +92,13 @@
             <!-- Dynamic input fields for placeholders will appear here -->
         </section>
 
-        <!-- Generated E-mail Display -->
+        <!-- Generated email Display -->
         <section>
-    <label for="finalE-mail">Final E-mail:</label>
-    <textarea id="finalE-mail" rows="10" style="resize: vertical;"></textarea>
+    <label for="finalemail">Final email:</label>
+    <textarea id="finalemail" rows="10" style="resize: vertical;"></textarea>
 
     <!-- Add buttons for actions -->
-    <div class="final-E-mail-actions">
+    <div class="final-email-actions">
     <!-- Copy Button -->
     <button id="copyFinalButton" class="action-btn" title="Copy to Clipboard">📋 Copy</button>
 
@@ -112,7 +112,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 AI E-mail Generator. All rights reserved.</p>
+        <p>&copy; 2025 AI email Generator. All rights reserved.</p>
     </footer>
 
     <script src="js/E-mailGenerator.js"></script>
