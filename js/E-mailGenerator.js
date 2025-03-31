@@ -118,7 +118,7 @@ finalE-mailArea.disabled = true; // Disable editing while loading
     // Send the final E-mail to AI for grammar and language improvement
     try {
         // Send the final E-mail to AI for refinement
-        const refinedE-mail = await refineE-mail(finalE-mail);
+        const refinedE-mail = await refineEmail(finalE-mail);
 
         // Display the refined E-mail in the text area
         finalE-mailArea.value = refinedE-mail.trim();
@@ -131,7 +131,7 @@ finalE-mailArea.disabled = true; // Disable editing while loading
 }
 
 // Send the final E-mail to AI for grammar and language refinement
-async function refineE-mail(E-mail, E-mailTone) {
+async function refineEmail(E-mail, E-mailTone) {
     const prompt = `Refine the following E-mail for grammar, clarity, and professionalism in tone ${E-mailTone}:\n\n${E-mail}`;
 
     try {
@@ -164,7 +164,7 @@ async function refineE-mail(E-mail, E-mailTone) {
 }
 
 // Handle the entire E-mail generation process
-async function handleE-mailGeneration() {
+async function handleEmailGeneration() {
     const E-mailType = document.getElementById("E-mailType").value;
     const E-mailTone = document.getElementById("E-mailTone").value;
     const additionalInfo = document.getElementById("additionalInfo").value.trim();
@@ -238,7 +238,7 @@ document.getElementById("generateTemplateButton").addEventListener("click", asyn
     templateBox.value = ""; // Clear the old template text
 
     try {
-        let generatedText = await handleE-mailGeneration(); // Call AI function
+        let generatedText = await handleEmailGeneration(); // Call AI function
 
         // Hide "Loading ···" message and display the generated text
         loadingIndicator.style.display = "none";
