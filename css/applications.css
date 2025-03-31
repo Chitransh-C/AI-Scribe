@@ -240,3 +240,24 @@ footer {
     margin-left: 8px;
     font-size: 18px;
 }
+#loadingIndicator {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff9800; /* Highlight color */
+    margin-left: 10px;
+    display: inline-block;
+    animation: dots 1s infinite steps(4);
+}
+
+/* Hide loading text initially */
+.hidden {
+    display: none;
+}
+
+/* Animation for the dots */
+@keyframes dots {
+    0% { content: "Loading "; }
+    25% { content: "Loading ·"; }
+    50% { content: "Loading ··"; }
+    75% { content: "Loading ···"; }
+}

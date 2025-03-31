@@ -157,6 +157,7 @@ async function handleLetterGeneration() {
     const letterType = document.getElementById("letterType").value;
     const letterTone = document.getElementById("letterTone").value;
     const additionalInfo = document.getElementById("additionalInfo").value.trim();
+const loadingIndicator = document.getElementById("loadingIndicator");
 
 
 
@@ -167,14 +168,20 @@ async function handleLetterGeneration() {
 
 
     try {
+        // Show Loading Indicator
+        loadingIndicator.classList.remove("hidden");
+
         const template = await fetchTemplate(letterType, letterTone, additionalInfo);
         document.getElementById("template").value = template; // Display the template
 
-
+        // Extract placeholders and load input fields
         const placeholders = extractPlaceholders(template);
-        loadInputFields(placeholders); // Load input fields for placeholders
+        loadInputFields(placeholders);
     } catch (error) {
         console.error("Error handling letter generation:", error);
+    } finally {
+        // Hide Loading Indicator when done
+        loadingIndicator.classList.add("hidden");
     }
 }
 
