@@ -213,7 +213,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Attach event listener to the generate button
-document.getElementById("generateTemplateButton").addEventListener("click", handleLetterGeneration);
+document.getElementById("generateTemplateButton").addEventListener("click", async function () {
+    let loadingIndicator = document.getElementById("loadingIndicator");
+    let templateBox = document.getElementById("template");
+
+    // Show "Loading ···" message
+    loadingIndicator.style.display = "inline"; 
+    templateBox.value = ""; // Clear the old template text
+
+    try {
+        let generatedText = await handleLetterGeneration(); // Call AI function
+
+        // Hide "Loading ···" message and display the generated text
+        loadingIndicator.style.display = "none";
+        templateBox.value = generatedText;
+    } catch (error) {
+        console.error("Error generating template:", error);
+        loadingIndicator.innerText = "Error loading template.";
+        setTimeout(() => loadingIndicator.style.display = "none", 3000);
+    }
+});
+
 
 // Copy Final Letter to Clipboard
 document.getElementById("copyFinalButton").addEventListener("click", () => {
