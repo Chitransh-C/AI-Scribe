@@ -99,7 +99,11 @@ function loadInputFields(placeholders) {
 // Replace placeholders with user-provided inputs and refine the letter
 async function replacePlaceholders(placeholders) {
     const template = document.getElementById("template").value;
-    let finalLetter = template;
+    const finalLetterArea = document.getElementById("finalLetter");
+let finalLetter = template;
+finalLetterArea.value = "Generating Final Letter...";
+finalLetterArea.disabled = true; // Disable editing while loading
+
 
     placeholders.forEach((placeholder) => {
         const userInput = document.getElementById(placeholder).value.trim();
@@ -112,11 +116,18 @@ async function replacePlaceholders(placeholders) {
     });
 
     // Send the final letter to AI for grammar and language improvement
-    const refinedLetter = await refineLetter(finalLetter);
+    try {
+        // Send the final letter to AI for refinement
+        const refinedLetter = await refineLetter(finalLetter);
 
-    // Display the refined letter to the user
-    document.getElementById("finalLetter").value = refinedLetter.trim();
-
+        // Display the refined letter in the text area
+        finalLetterArea.value = refinedLetter.trim();
+    } catch (error) {
+        console.error("Error refining letter:", error);
+        finalLetterArea.value = "An error occurred while generating the letter.";
+    } finally {
+        finalLetterArea.disabled = false; // Re-enable editing after completion
+    }
 }
 
 // Send the final letter to AI for grammar and language refinement
