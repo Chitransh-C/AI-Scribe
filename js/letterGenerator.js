@@ -178,6 +178,8 @@ const loadingIndicator = document.getElementById("loadingIndicator");
         }
 
         document.getElementById("template").value = template; // Ensure this executes
+        const placeholders = extractPlaceholders(template);
+        loadInputFields(placeholders); // Load input fields for placeholders
         return template; 
         
     } catch (error) {
