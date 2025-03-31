@@ -172,11 +172,14 @@ const loadingIndicator = document.getElementById("loadingIndicator");
         loadingIndicator.classList.remove("hidden");
 
         const template = await fetchTemplate(letterType, letterTone, additionalInfo);
-        document.getElementById("template").value = template; // Display the template
+        
+        if (!template) {
+            throw new Error("Template generation returned undefined.");
+        }
 
-        // Extract placeholders and load input fields
-        const placeholders = extractPlaceholders(template);
-        loadInputFields(placeholders);
+        document.getElementById("template").value = template; // Ensure this executes
+        return template; 
+        
     } catch (error) {
         console.error("Error handling letter generation:", error);
     } finally {
