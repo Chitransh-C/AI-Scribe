@@ -32,7 +32,8 @@ if (!OPENROUTER_API_KEY) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer ${OPENROUTER_API_KEY}" // Replace with your valid API key
+               "Authorization": `Bearer ${OPENROUTER_API_KEY}`
+ // Replace with your valid API key
             },
             body: JSON.stringify({
                 model: "mistralai/mistral-7b-instruct",
@@ -127,7 +128,8 @@ async function refineLetter(letter, letterTone) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer ${OPENROUTER_API_KEY}" // Replace with your valid API key
+               "Authorization": `Bearer ${OPENROUTER_API_KEY}`
+ // Replace with your valid API key
             },
             body: JSON.stringify({
                 model: "mistralai/mistral-7b-instruct",
