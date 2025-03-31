@@ -215,6 +215,7 @@ footer {
     width: calc(100% - 20px);
     padding: 8px;
     margin-bottom: 10px;
+    color: white;
 }
 /* Back Button */
 .back-button {
