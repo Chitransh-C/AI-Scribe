@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Letter Generator</title>
+    <link rel="stylesheet" href="css/applications.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+        <header>
+        <div class="nav-container">
+            <a class="logo" href="#">
+                <img src="asset/lettergen.jpg" alt="LetterGen Logo">
+                AI Letter Generator
+            </a>
+            <div class="nav-container">
+        <button class="back-button" onclick="window.location.href='index.html';">
+            ⬅️ 
+        </button>
+        
+    </div>
+    </header>
+
+    <main>
+        <!-- Letter Type Selection -->
+        <section>
+            <label for="letterType">Select Letter Type:</label>
+            <select id="letterType">
+                <option value="" disabled selected>Select a letter type</option>
+                <option value="Job Application">Job Application</option>
+<option value="Resignation Letter">Resignation Letter</option>
+<option value="Request from leave from college workshop due to nptel exam for one day">Request of leave because of NPTEL exam </option>
+<option value="Complaint Letter">Complaint Letter</option>
+<option value="Request for Leave">Request for Leave</option>
+<option value="Business Proposal">Business Proposal</option>
+<option value="Invitation Letter">Invitation Letter</option>
+<option value="Recommendation Letter">Recommendation Letter</option>
+<option value="Letter of Reference">Letter of Reference</option>
+<option value="Request for Information">Request for Information</option>
+<option value="Follow-Up Letter">Follow-Up Letter</option>
+<option value="Acceptance Letter">Acceptance Letter</option>
+<option value="Declination Letter">Declination Letter</option>
+<option value="Bank Account Closure">Bank Account Closure</option>
+<option value="Request for Sponsorship">Request for Sponsorship</option>
+<option value="Letter to the Editor">Letter to the Editor</option>
+<option value="Appointment Letter">Appointment Letter</option>
+<option value="Internship Application">Internship Application</option>
+<option value="Letter of Apology">Letter of Apology</option>
+<option value="Notice of Termination">Notice of Termination</option>
+<option value="Agreement Letter">Agreement Letter</option>
+
+                <!-- Add more letter types as needed -->
+            </select>
+            <!-- Letter Tone Selection -->
+<section>
+    <label for="letterTone" style="margin-top: 20px;">Select Letter Tone:</label>
+    <select id="letterTone">
+        <option value="" disabled selected>Select a tone</option>
+        <option value="Strictly Formal">Strictly Formal</option>
+        <option value="Professional">Professional</option>
+        <option value="Mildly Casual but Formal">Mildly Casual but Formal</option>
+    </select>
+</section>
+
+            <!-- Additional Information -->
+<section>
+    <label for="additionalInfo">Additional Information:</label>
+    <textarea id="additionalInfo" placeholder="Enter any additional information here..." rows="3"></textarea>
+</section>
+
+            
+            
+            <button id="generateTemplateButton">Generate Template</button>
+        </section>
+
+        <!-- AI Template Display -->
+        <section>
+            <h2>Generated Template</h2>
+            
+    
+    <textarea id="template" rows="10" style="resize: vertical;"></textarea>
+</section>
+
+
+        <!-- Input Fields for Placeholders -->
+        <section id="inputContainer">
+            <!-- Dynamic input fields for placeholders will appear here -->
+        </section>
+
+        <!-- Generated Letter Display -->
+        <section>
+    <label for="finalLetter">Final Letter:</label>
+    <textarea id="finalLetter" rows="10" style="resize: vertical;"></textarea>
+
+    <!-- Add buttons for actions -->
+    <div class="final-letter-actions">
+    <!-- Copy Button -->
+    <button id="copyFinalButton" class="action-btn" title="Copy to Clipboard">📋 Copy</button>
+
+    <!-- Download Button -->
+    <button id="downloadFinalButton" class="action-btn" title="Download as PDF">⬇️ Download</button>
+</div>
+
+</section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Letter Generator. All rights reserved.</p>
+    </footer>
+
+    <script src="js/letterGenerator.js"></script>
+</body>
+</html>
