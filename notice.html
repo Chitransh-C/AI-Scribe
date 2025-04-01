@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI notice Generator</title>
+    <link rel="stylesheet" href="css/notice.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+        <header>
+        <div class="nav-container">
+            <a class="logo" href="#">
+                <img src="asset/lettergen.jpg" alt="noticeGen Logo">
+                AI notice Generator
+            </a>
+            
+        <button class="back-button" onclick="window.location.href='index.html';">
+            ⬅️ 
+        </button>
+        
+    </div>
+    </header>
+
+    <main>
+        <!-- notice Type Selection -->
+        <section>
+            <label for="noticeType">Select notice Type:</label>
+            <select id="noticeType">
+                <option value="" disabled selected>Select a notice type</option>
+                <option value="Meeting Announcement">Meeting Announcement</option>
+<option value="Event Notification">Event Notification</option>
+<option value="Examination Notice">Examination Notice</option>
+<option value="Holiday Announcement">Holiday Announcement</option>
+<option value="Policy Change Notice">Policy Change Notice</option>
+<option value="Job Vacancy Notice">Job Vacancy Notice</option>
+<option value="Lost and Found Notice">Lost and Found Notice</option>
+<option value="Warning Notice">Warning Notice</option>
+<option value="Urgent Announcement">Urgent Announcement</option>
+<option value="Tender Notice">Tender Notice</option>
+<option value="Resignation Notice">Resignation Notice</option>
+<option value="General Information Notice">General Information Notice</option>
+<option value="Fee Payment Reminder">Fee Payment Reminder</option>
+<option value="Relocation Notice">Relocation Notice</option>
+<option value="Health and Safety Notice">Health and Safety Notice</option>
+
+                <!-- Add more notice types as needed -->
+            </select>
+            <!-- notice Tone Selection -->
+<section>
+    <label for="noticeTone" style="margin-top: 20px;">Select notice Tone:</label>
+    <select id="noticeTone">
+        <option value="" disabled selected>Select a tone</option>
+        <option value="Strictly Formal">Strictly Formal</option>
+        <option value="Professional">Professional</option>
+        <option value="Mildly Casual but Formal">Mildly Casual but Formal</option>
+    </select>
+</section>
+
+            <!-- Additional Information -->
+<section>
+    <label for="additionalInfo">Additional Information:</label>
+    <textarea id="additionalInfo" placeholder="Enter any additional information here..." rows="3"></textarea>
+</section>
+
+            
+            
+            <button id="generateTemplateButton">Generate Template</button>
+            <p id="loadingIndicator" class="hidden">Loading ···</p>
+
+            
+        </section>
+
+        <!-- AI Template Display -->
+        <section>
+            <h2>Generated Template</h2>
+            
+    
+    <textarea id="template" rows="10" style="resize: vertical;"></textarea>
+</section>
+
+
+        <!-- Input Fields for Placeholders -->
+        <section id="inputContainer">
+            <!-- Dynamic input fields for placeholders will appear here -->
+        </section>
+
+        <!-- Generated notice Display -->
+        <section>
+    <label for="finalnotice">Final notice:</label>
+    <textarea id="finalnotice" rows="10" style="resize: vertical;"></textarea>
+
+    <!-- Add buttons for actions -->
+    <div class="final-notice-actions">
+    <!-- Copy Button -->
+    <button id="copyFinalButton" class="action-btn" title="Copy to Clipboard">📋 Copy</button>
+
+    <!-- Download Button -->
+    <button id="downloadFinalButton" class="action-btn" title="Download as PDF">⬇️ Download</button>
+</div>
+
+</section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI notice Generator. All rights reserved.</p>
+    </footer>
+
+    <script src="js/noticeGenerator.js"></script>
+</body>
+</html>

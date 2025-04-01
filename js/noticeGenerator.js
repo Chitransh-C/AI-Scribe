@@ -18,13 +18,13 @@ async function fetchApiKey() {
 
 // Call fetchApiKey once when the page loads
 fetchApiKey();
-// Fetch the AI-generated template based on the selected email type
-async function fetchTemplate(emailType, emailTone, additionalInfo) {
+// Fetch the AI-generated template based on the selected notice type
+async function fetchTemplate(noticeType, noticeTone, additionalInfo) {
 if (!OPENROUTER_API_KEY) {
         alert("API key is missing. Please try again.");
         return;
     }
-    const prompt = `Generate a professional email template for a ${emailType} with a tone that is ${emailTone}. Include the following additional information: "${additionalInfo}". Use placeholders in [ ] for missing details.It should be concise and meaningfull`;
+    const prompt = `Generate a professional notice template for a ${noticeType} with a tone that is ${noticeTone}. Include the following additional information: "${additionalInfo}". Use placeholders in [ ] for missing details.`;
 
 
     try {
@@ -39,7 +39,7 @@ if (!OPENROUTER_API_KEY) {
                 model: "mistralai/mistral-7b-instruct",
                 messages: [{ role: "user", content: prompt }],
                 temperature: 0.7,
-                max_tokens: 380
+                max_tokens: 600
             })
         });
 
@@ -91,48 +91,48 @@ function loadInputFields(placeholders) {
     });
 
     const generateButton = document.createElement("button");
-    generateButton.innerText = "Generate Final email";
+    generateButton.innerText = "Generate Final notice";
     generateButton.onclick = () => replacePlaceholders(placeholders);
     container.appendChild(generateButton);
 }
 
-// Replace placeholders with user-provided inputs and refine the email
+// Replace placeholders with user-provided inputs and refine the notice
 async function replacePlaceholders(placeholders) {
     const template = document.getElementById("template").value;
-    const finalemailArea = document.getElementById("finalemail");
-let finalemail = template;
-finalemailArea.value = "Generating Final email...";
-finalemailArea.disabled = true; // Disable editing while loading
+    const finalnoticeArea = document.getElementById("finalnotice");
+let finalnotice = template;
+finalnoticeArea.value = "Generating Final notice...";
+finalnoticeArea.disabled = true; // Disable editing while loading
 
 
     placeholders.forEach((placeholder) => {
         const userInput = document.getElementById(placeholder).value.trim();
         if (userInput) {
-            finalemail = finalemail.replace(new RegExp(`\\[${placeholder}\\]`, "g"), userInput);
+            finalnotice = finalnotice.replace(new RegExp(`\\[${placeholder}\\]`, "g"), userInput);
         } else {
             alert(`Please provide a valid input for "${placeholder}".`);
             return;
         }
     });
 
-    // Send the final email to AI for grammar and language improvement
+    // Send the final notice to AI for grammar and language improvement
     try {
-        // Send the final email to AI for refinement
-        const refinedemail = await refineemail(finalemail);
+        // Send the final notice to AI for refinement
+        const refinednotice = await refinenotice(finalnotice);
 
-        // Display the refined email in the text area
-        finalemailArea.value = refinedemail.trim();
+        // Display the refined notice in the text area
+        finalnoticeArea.value = refinednotice.trim();
     } catch (error) {
-        console.error("Error refining email:", error);
-        finalemailArea.value = "An error occurred while generating the email.";
+        console.error("Error refining notice:", error);
+        finalnoticeArea.value = "An error occurred while generating the notice.";
     } finally {
-        finalemailArea.disabled = false; // Re-enable editing after completion
+        finalnoticeArea.disabled = false; // Re-enable editing after completion
     }
 }
 
-// Send the final email to AI for grammar and language refinement
-async function refineemail(email, emailTone) {
-    const prompt = `Refine the following email for grammar, clarity, and professionalism in tone ${emailTone}:\n\n${email}`;
+// Send the final notice to AI for grammar and language refinement
+async function refinenotice(notice, noticeTone) {
+    const prompt = `Refine the following notice for grammar, clarity, and professionalism in tone ${noticeTone}:\n\n${notice}`;
 
     try {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -146,7 +146,7 @@ async function refineemail(email, emailTone) {
                 model: "mistralai/mistral-7b-instruct",
                 messages: [{ role: "user", content: prompt }],
                 temperature: 0.7,
-                max_tokens: 380
+                max_tokens: 600
             })
         });
 
@@ -157,23 +157,23 @@ async function refineemail(email, emailTone) {
             throw new Error("Refinement failed.");
         }
     } catch (error) {
-        console.error("Error refining email:", error);
-        alert("Failed to refine the email. Showing the original email instead.");
-        return email; // Return the original email if refinement fails
+        console.error("Error refining notice:", error);
+        alert("Failed to refine the notice. Showing the original notice instead.");
+        return notice; // Return the original notice if refinement fails
     }
 }
 
-// Handle the entire email generation process
-async function handleemailGeneration() {
-    const emailType = document.getElementById("emailType").value;
-    const emailTone = document.getElementById("emailTone").value;
+// Handle the entire notice generation process
+async function handlenoticeGeneration() {
+    const noticeType = document.getElementById("noticeType").value;
+    const noticeTone = document.getElementById("noticeTone").value;
     const additionalInfo = document.getElementById("additionalInfo").value.trim();
 const loadingIndicator = document.getElementById("loadingIndicator");
 
 
 
-   if (!emailType || !emailTone) {
-    alert("Please select both a email type and a tone.");
+   if (!noticeType || !noticeTone) {
+    alert("Please select both a notice type and a tone.");
     return;
 }
 
@@ -182,7 +182,7 @@ const loadingIndicator = document.getElementById("loadingIndicator");
         // Show Loading Indicator
         loadingIndicator.classList.remove("hidden");
 
-        const template = await fetchTemplate(emailType, emailTone, additionalInfo);
+        const template = await fetchTemplate(noticeType, noticeTone, additionalInfo);
         
         if (!template) {
             throw new Error("Template generation returned undefined.");
@@ -194,7 +194,7 @@ const loadingIndicator = document.getElementById("loadingIndicator");
         return template; 
         
     } catch (error) {
-        console.error("Error handling email generation:", error);
+        console.error("Error handling notice generation:", error);
     } finally {
         // Hide Loading Indicator when done
         loadingIndicator.classList.add("hidden");
@@ -238,7 +238,7 @@ document.getElementById("generateTemplateButton").addEventListener("click", asyn
     templateBox.value = ""; // Clear the old template text
 
     try {
-        let generatedText = await handleemailGeneration(); // Call AI function
+        let generatedText = await handlenoticeGeneration(); // Call AI function
 
         // Hide "Loading ···" message and display the generated text
         loadingIndicator.style.display = "none";
@@ -251,21 +251,21 @@ document.getElementById("generateTemplateButton").addEventListener("click", asyn
 });
 
 
-// Copy Final email to Clipboard
+// Copy Final notice to Clipboard
 document.getElementById("copyFinalButton").addEventListener("click", () => {
-    const finalText = document.getElementById("finalemail").value;
+    const finalText = document.getElementById("finalnotice").value;
     navigator.clipboard.writeText(finalText)
-        .then(() => alert("Final email copied to clipboard!"))
+        .then(() => alert("Final notice copied to clipboard!"))
         .catch(err => console.error("Failed to copy text:", err));
 });
 
-// Download Final email as PDF
+// Download Final notice as PDF
 document.getElementById("downloadFinalButton").addEventListener("click", () => {
     const { jsPDF } = window.jspdf; // Access jsPDF
-    const finalText = document.getElementById("finalemail").value;
+    const finalText = document.getElementById("finalnotice").value;
 
     if (finalText.trim() === "") {
-        alert("Final email is empty. Cannot generate PDF.");
+        alert("Final notice is empty. Cannot generate PDF.");
         return;
     }
 
@@ -295,5 +295,5 @@ document.getElementById("downloadFinalButton").addEventListener("click", () => {
     });
 
     // Save the PDF file
-    doc.save("Final_email.pdf");
+    doc.save("Final_notice.pdf");
 });
