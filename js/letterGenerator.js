@@ -39,7 +39,7 @@ if (!OPENROUTER_API_KEY) {
                 model: "mistralai/mistral-7b-instruct",
                 messages: [{ role: "user", content: prompt }],
                 temperature: 0.7,
-                max_tokens: 500
+                max_tokens: 550
             })
         });
 
@@ -146,7 +146,7 @@ async function refineLetter(letter, letterTone) {
                 model: "mistralai/mistral-7b-instruct",
                 messages: [{ role: "user", content: prompt }],
                 temperature: 0.7,
-                max_tokens: 500
+                max_tokens: 550
             })
         });
 
