@@ -24,7 +24,7 @@ if (!OPENROUTER_API_KEY) {
         alert("API key is missing. Please try again.");
         return;
     }
-    const prompt = `Generate a professional template for a ${emailType} with a tone that is ${emailTone}. Include the following additional information: "${additionalInfo}". Use placeholders in [ ] for missing details.`;
+    const prompt = `Generate a professional email template for a ${emailType} with a tone that is ${emailTone}. Include the following additional information: "${additionalInfo}". Use placeholders in [ ] for missing details.It should be concise and meaningfull`;
 
 
     try {
